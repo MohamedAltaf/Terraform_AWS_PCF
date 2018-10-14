@@ -6,14 +6,6 @@ output "public_ip" {
   value = "${element(concat(aws_eip.ops_manager.*.public_ip, list("")), 0)}"
 }
 
-output "dns" {
-  value = "${element(concat(aws_route53_record.ops_manager.*.name, list("")), 0)}"
-}
-
-output "optional_dns" {
-  value = "${element(concat(aws_route53_record.optional_ops_manager.*.name, list("")), 0)}"
-}
-
 output "security_group_id" {
   value = "${element(concat(aws_security_group.ops_manager_security_group.*.id, list("")), 0)}"
 }
