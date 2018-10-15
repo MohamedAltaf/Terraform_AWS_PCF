@@ -36,7 +36,7 @@ resource "aws_elb" "web_elb" {
   }
 
   security_groups = ["${aws_security_group.elb_security_group.id}"]
-  subnets         = ["${aws_subnet.public_subnets.*.id}"]
+  subnets         = ["${aws_subnet.management_subnet_1.id}", "${aws_subnet.management_subnet_2.id}", "${aws_subnet.management_subnet_3.id}"]
 }
 
 resource "aws_elb" "ssh_elb" {
@@ -61,7 +61,7 @@ resource "aws_elb" "ssh_elb" {
   }
 
   security_groups = ["${aws_security_group.ssh_elb_security_group.id}"]
-  subnets         = ["${aws_subnet.public_subnets.*.id}"]
+  subnets         = ["${aws_subnet.management_subnet_1.id}", "${aws_subnet.management_subnet_2.id}", "${aws_subnet.management_subnet_3.id}"]
 }
 
 resource "aws_elb" "isoseg" {
@@ -104,7 +104,7 @@ resource "aws_elb" "isoseg" {
   }
 
   security_groups = ["${aws_security_group.isoseg_elb_security_group.id}"]
-  subnets         = ["${aws_subnet.public_subnets.*.id}"]
+  subnets         = ["${aws_subnet.management_subnet_1.id}", "${aws_subnet.management_subnet_2.id}", "${aws_subnet.management_subnet_3.id}"]
 
   tags = "${merge(var.tags, local.default_tags)}"
 }
