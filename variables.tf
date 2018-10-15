@@ -102,9 +102,15 @@ variable "ops_manager_instance_type" {
 }
 
 variable "ops_manager_private" {
+  type        = "string"
+  description = "IP Address for Ops Manager. It must be a valid IP from the Management Subnet Zone1. CIDR block fir subnet is 10.119.27.128/28"
+  default     = "10.119.27.140"
+}
+
+/*variable "ops_manager_private" {
   default = false
   description = "If true, the Ops Manager will be colocated with the BOSH director on the management subnet instead of on the public subnet"
-}
+}*/
 
 variable "ops_manager" {
   default = true
