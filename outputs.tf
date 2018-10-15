@@ -51,10 +51,6 @@ output "ops_manager_public_ip" {
   value = "${module.ops_manager.public_ip}"
 }
 
-output "env_dns_zone_name_servers" {
-  value = ["${compact(split(",", local.name_servers))}"]
-}
-
 output "sys_domain" {
   value = "sys.${var.env_name}.${var.dns_suffix}"
 }
@@ -250,10 +246,6 @@ output "isoseg_ssl_cert" {
 output "isoseg_ssl_private_key" {
   sensitive = true
   value     = "${length(var.isoseg_ssl_ca_cert) > 0 ? element(concat(tls_private_key.isoseg_ssl_private_key.*.private_key_pem, list("")), 0) : var.isoseg_ssl_private_key}"
-}
-
-output "dns_zone_id" {
-  value = "${local.zone_id}"
 }
 
 output "ops_manager_ip" {
