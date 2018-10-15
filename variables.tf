@@ -1,5 +1,7 @@
 variable "env_name" {}
 
+variable "dns_suffix" {}
+
 variable "hosted_zone" {
   default = ""
 }
