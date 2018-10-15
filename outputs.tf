@@ -95,23 +95,6 @@ output "pas_bucket_iam_instance_profile_name" {
   value = "${aws_iam_instance_profile.pas_bucket_access.name}"
 }
 
-output "rds_address" {
-  value = "${element(concat(aws_db_instance.rds.*.address, list("")), 0)}"
-}
-
-output "rds_port" {
-  value = "${element(concat(aws_db_instance.rds.*.port, list("")), 0)}"
-}
-
-output "rds_username" {
-  value = "${element(concat(aws_db_instance.rds.*.username, list("")), 0)}"
-}
-
-output "rds_password" {
-  sensitive = true
-  value     = "${element(concat(aws_db_instance.rds.*.password, list("")), 0)}"
-}
-
 output "ops_manager_security_group_id" {
   value = "${module.ops_manager.security_group_id}"
 }
@@ -261,10 +244,6 @@ output "ssh_lb_name" {
 
 output "ssh_elb_name" {
   value = "${aws_elb.ssh_elb.name}"
-}
-
-output "tcp_elb_name" {
-  value = "${aws_elb.tcp_elb.name}"
 }
 
 output "isoseg_elb_name" {
