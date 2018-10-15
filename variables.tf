@@ -14,6 +14,8 @@ variable "availability_zones" {
   type = "list"
 }
 
+# Network ======================================================
+
 variable "vpc_cidr" {
   type    = "string"
   default = "10.119.26.0/23"
@@ -73,6 +75,8 @@ variable "services_cidr_3" {
   default     = "10.119.27.208/28"
 }
 
+# Buckets ===================================================
+
 variable "create_versioned_pas_buckets" {
   default = false
 }
@@ -80,6 +84,8 @@ variable "create_versioned_pas_buckets" {
 variable "create_backup_pas_buckets" {
   default = false
 }
+
+# Ops Manager ===================================================
 
 variable "ops_manager_ami" {
   default = ""
@@ -90,25 +96,12 @@ variable "optional_ops_manager_ami" {
 }
 
 variable "ops_manager_instance_type" {
-  default = "r4.large"
+  default = "t2.micro"
 }
 
 variable "ops_manager_private" {
   default = false
   description = "If true, the Ops Manager will be colocated with the BOSH director on the management subnet instead of on the public subnet"
-}
-
-variable "rds_db_username" {
-  default = "admin"
-}
-
-variable "rds_instance_class" {
-  default = "db.m4.large"
-}
-
-variable "rds_instance_count" {
-  type    = "string"
-  default = 0
 }
 
 variable "ops_manager" {
@@ -117,6 +110,29 @@ variable "ops_manager" {
 
 variable "optional_ops_manager" {
   default = false
+}
+
+# RDS ================================================
+
+variable "rds_db_username" {
+  default = "admin"
+}
+
+variable "rds_instance_class" {
+  default = "t2.micro"
+}
+
+variable "rds_instance_count" {
+  type    = "string"
+  default = 0
+}
+
+# Certificates ==============================================
+
+variable "ssl_cert_arn" {
+  type        = "string"
+  description = "The ARN for the certificate to be used by the LB, optional if `ssl_cert` or `ssl_ca_cert` is provided"
+  default     = ""
 }
 
 variable "ssl_cert" {
@@ -128,6 +144,18 @@ variable "ssl_cert" {
 variable "ssl_private_key" {
   type        = "string"
   description = "the contents of an SSL private key to be used by the LB, optional if `ssl_cert_arn` or `ssl_ca_cert` is provided"
+  default     = ""
+}
+
+variable "ssl_ca_cert" {
+  type        = "string"
+  description = "the contents of a CA public key to be used to sign the generated LB certificate, optional if `ssl_cert_arn` or `ssl_cert` is provided"
+  default     = ""
+}
+
+variable "ssl_ca_private_key" {
+  type        = "string"
+  description = "the contents of a CA private key to be used to sign the generated LB certificate, optional if `ssl_cert_arn` or `ssl_cert` is provided"
   default     = ""
 }
 
