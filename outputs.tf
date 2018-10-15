@@ -51,14 +51,6 @@ output "ops_manager_public_ip" {
   value = "${module.ops_manager.public_ip}"
 }
 
-output "ops_manager_dns" {
-  value = "${module.ops_manager.dns}"
-}
-
-output "optional_ops_manager_dns" {
-  value = "${module.ops_manager.optional_dns}"
-}
-
 output "env_dns_zone_name_servers" {
   value = ["${compact(split(",", local.name_servers))}"]
 }
