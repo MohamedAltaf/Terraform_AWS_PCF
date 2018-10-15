@@ -2,6 +2,9 @@ output "iaas" {
   value = "aws"
 }
 
+
+# Buckets ============================================
+
 output "ops_manager_bucket" {
   value = "${module.ops_manager.bucket}"
 }
@@ -41,6 +44,8 @@ output "pas_resources_backup_bucket" {
 output "blobstore_kms_key_id" {
   value = "${aws_kms_key.blobstore_kms_key.key_id}"
 }
+
+# Ops Manager ========================================================
 
 output "ops_manager_public_ip" {
   value = "${module.ops_manager.public_ip}"
@@ -256,10 +261,6 @@ output "ssh_lb_name" {
 
 output "ssh_elb_name" {
   value = "${aws_elb.ssh_elb.name}"
-}
-
-output "tcp_lb_name" {
-  value = "${aws_elb.tcp_elb.name}"
 }
 
 output "tcp_elb_name" {
