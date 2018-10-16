@@ -1,3 +1,5 @@
+# Environment ==================================================
+
 variable "env_name" {}
 
 variable "dns_suffix" {}
