@@ -3,7 +3,7 @@ module "ops_manager" {
 
   count          = "${var.ops_manager ? 1 : 0}"
   optional_count = "${var.optional_ops_manager ? 1 : 0}"
-  subnet_id      = "${var.ops_manager_ip}"
+  subnet_id      = "${aws_subnet.management_subnet_1.id}"
 
   env_name                  = "${var.env_name}"
   ami                       = "${var.ops_manager_ami}"
