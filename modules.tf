@@ -3,7 +3,7 @@ module "ops_manager" {
 
   count          = "${var.ops_manager ? 1 : 0}"
   optional_count = "${var.optional_ops_manager ? 1 : 0}"
-  private_id      = "${var.ops_manager_ip}"
+  subnet_id      = "${var.ops_manager_ip}"
 
   env_name                  = "${var.env_name}"
   ami                       = "${var.ops_manager_ami}"
